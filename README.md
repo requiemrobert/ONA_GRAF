@@ -1,2 +1,2 @@
-# ONA_GRAF
-Proyecto 
+# global_system
+proyecto 
