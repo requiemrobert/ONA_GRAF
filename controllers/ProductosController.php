@@ -12,7 +12,7 @@ class ProductosController
 	       $data_style = '';
 	    } 
 
-		$data_style = ['normalize', 'main_style', 'font-awesome'];
+		$data_style = ['css/normalize', 'css/main_style', 'css/font-awesome'];
 
 		$data_javascript = ['jquery-3.2.1','register'];
 

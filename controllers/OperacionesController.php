@@ -12,9 +12,9 @@ class OperacionesController
 	       $data_style = '';
 	    } 
 
-		$data_style = ['normalize','main_style','font-awesome'];
+		$data_style = ['css/normalize','css/main_style','css/font-awesome'];
 
-		$data_javascript = ['header'];
+		$data_javascript = ['js/header'];
 
 		$data_head = array(
 
