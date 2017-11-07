@@ -62,9 +62,9 @@
 					
 					<div class="col col-half">
                        <div class="content">
-                       		<label for="direccion_cliente">*Telefonos</label>
+                       		<label for="telf_cliente">*Telefonos</label>
 						 	<input type="tel" name="telf_cliente" id="telf_cliente" required>
-						 	<label for="direccion_cliente">+Telefonos</label>
+						 	<label for="otro_telf_cliente">+Telefonos</label>
 						 	<input type="tel" name="otro_telf_cliente" id="otro_telf_cliente">
                        </div>
                 	</div>

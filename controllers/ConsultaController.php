@@ -14,9 +14,9 @@ class ConsultaController extends ClientesModel
 	       $data_javascript = [];
 	    } 
 
-		$data_style = ['css/normalize','css/main_style', 'css/font-awesome', 'css/gridly.min', 'css/consulta', 'data_table/css/jquery-ui.css', 'data_table/css/datatables.min'];
+		$data_style = ['css/normalize','css/main_style', 'css/font-awesome', 'css/gridly.min', 'css/consulta', 'data_table/css/jquery-ui.css', 'data_table/datatables.min'];
 
-		$data_javascript = ['js/jquery-3.2.1.min', 'data_table/js/datatables.min', 'js/consulta'];
+		$data_javascript = ['js/jquery-3.2.1.min', 'data_table/datatables.min', 'js/consulta'];
 
 		$data_head = array(
 				'data_style' => $data_style,
