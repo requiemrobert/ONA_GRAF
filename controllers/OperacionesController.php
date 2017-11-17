@@ -14,7 +14,7 @@ class OperacionesController
 
 		$data_style = ['css/normalize','css/main_style','css/font-awesome'];
 
-		$data_javascript = ['js/header'];
+		$data_javascript = ['js/jquery-3.2.1.min', 'js/main'];
 
 		$data_head = array(
 

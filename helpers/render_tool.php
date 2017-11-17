@@ -39,7 +39,7 @@ function render_sub_menu($data_opciones = []){
 	
 		foreach ($data_opciones as $sub_menu ) {
 		
-			$render .=	'<li> <a href='. BASE_URL . $sub_menu .'>';
+			$render .=	'<li> <a href='. BASE_URL . $sub_menu .' id='. $sub_menu .' >';
 			$render .=  "<i class='fa ". menu_ico($sub_menu)." fa-me' aria-hidden='true'></i>";
 			$render .=  "<label> ". $sub_menu ."</label>";
 			$render .=	"</a></li>";
@@ -53,13 +53,25 @@ function render_sub_menu($data_opciones = []){
 	return $render; 	
 }
 
-
 function menu_ico($menu=''){
 
 	switch ($menu) {
 		case 'operaciones':
 			 return 'fa-wrench';
 			break;
+
+		case 'produccion':
+			 return 'fa-cogs';
+			break;	
+
+		case 'stock':
+			 return 'fa-archive';
+			break;	
+
+		case 'ventas':
+			 return 'fa-balance-scale';
+			break;	
+			
 		case 'productos':
 			 return 'fa-cart-plus';
 			break;	
@@ -67,6 +79,7 @@ function menu_ico($menu=''){
 		case 'clientes':
 			 return 'fa-users';
 			break;	
+
 		case 'proveedores':
 			 return 'fa-truck';
 			break;
@@ -77,6 +90,10 @@ function menu_ico($menu=''){
 		case 'registro':
 			 return 'fa-address-book-o';
 			break;
+
+		case 'consulta':
+			 return 'fa-book';
+			break;			
 
 		case 'reportes':
 			 return 'fa-bar-chart';

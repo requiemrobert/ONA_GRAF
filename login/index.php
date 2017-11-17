@@ -19,7 +19,7 @@
 	<script src="media/js/bootstrap-notify.min.js"></script>
 	<script src="media/js/notify.js"></script>
 
-	<title>Login | Global System</title>
+	<title>Login | Ona Graf CA</title>
 </head>
 <body>
 

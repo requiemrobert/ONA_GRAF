@@ -35,19 +35,12 @@ function sendRequest(action, dataJson){
     });
 
     $login.fail(function(response) {
-      console.log(response); 
-      //var title_alerts = "Notificación";
-      //var mensaje = "No se puede atender su solicitud momento, Consulte con el Departamento de Sistema";
-      //alertaResponse( title_alerts, icon_danger, alerClassDanger, mensaje, directionShowCenter,3000 );
+      console.error(response); 
     });
 
-    /*
-    
     $login.always(function(data) {
        console.log(data);
     });
-
-    */
 
 }
 

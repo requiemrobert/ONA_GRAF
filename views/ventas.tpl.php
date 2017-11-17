@@ -5,7 +5,7 @@
 
 		<div class="content-table">
 
-			<table id="table-consulta-cliente" class="table table-striped table-bordered" cellspacing="0" width="100%">
+			<table id="table-consulta-ventas" class="table table-striped table-bordered" cellspacing="0" width="100%">
 		        <thead>
 		            <tr>
 		                <th>nombre_cliente</th>
@@ -16,7 +16,6 @@
 		                <th>email_cliente</th>
 		                <th>telf_cliente</th>
 		                <th>otro_telf_cliente</th>
-		                <th></th>
 		            </tr>
 		        </thead>
 		

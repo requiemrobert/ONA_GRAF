@@ -15,9 +15,9 @@ class ClientesController extends ClientesModel
 	       $data_javascript = [];
 	    } 
 
-		$data_style = ['css/normalize','css/main_style', 'css/font-awesome', 'css/gridly.min', 'css/clientes'];
+		$data_style = ['css/normalize','css/main_style', 'css/font-awesome', 'css/clientes'];
 
-		$data_javascript = ['js/jquery-3.2.1.min','js/clientes'];
+		$data_javascript = ['js/jquery-3.2.1.min', 'js/main', 'js/clientes'];
 
 		$data_head = array(
 				'data_style' => $data_style,
