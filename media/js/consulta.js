@@ -7,23 +7,31 @@ $(function(){
 
 	 	$('#table-consulta-cliente').DataTable({
 
+	 			 scrollY: "50vh",
+        		 scroller: true,
+        		 scrollCollapse: true,
+        		 responsive: true,
+
 			 	"ajax": baseURL + "/consultar_clientes",
 			 	
 		        "columns": [
-		            { "data": "nombre_cliente" },
-		            { "data": "pre_doc_cliente" },
-		            { "data": "doc_cliente" },
+		            { "data": "nombre" },
+		            { "data": "documento" },
+		            { "data": "telefono" },
+		            { "data": "otro_tefl" },
+		            { "data": "email" },
 		            { "data": "tipo_cliente" },
-		            { "data": "rason_social_cliente" },
-		            { "data": "email_cliente" },
-		            { "data": "telf_cliente" },
-		            { "data": "otro_telf_cliente" },
+		            { "data": "rason_social" },
         			{"render": function () {
-            									return '<button type="button" id="btn-editar" class="btn"><span class="fa fa-edit"></span><span class="hidden-xs"> Editar</span></button>';
+        						var btn_edit = '<button type="button" id="btn-editar" class="btn btn-edit"><span class="fa fa-edit"></span></button>';
+            					var btn_cancel = '<button type="button" id="btn-cancelar" class="btn btn-cancel"><span class="fa fa-trash-o"></span></button>'; 
+            					return '<div class="cont-btn-table">'+btn_edit + btn_cancel+'</div>';
        						   }
        				},
 		        ],
-
+		     /*    "sScrollY": "500px",
+		         "scrollX": true,
+ 				 scrollCollapse: true,*/
 		        "language": {
 	            "lengthMenu": "Mostrar _MENU_ registro por página",
 	            "zeroRecords": "No se encontraron resultados",
@@ -42,7 +50,6 @@ $(function(){
 			   		}
 	           	}
 		        	 
-
 	 	});  	
 
 });

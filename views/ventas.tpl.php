@@ -1,11 +1,11 @@
 
-<section class="main">
+<section class="main-table">
 
 		<h1><?= $titulo ?></h1>
 
 		<div class="content-table">
 
-			<table id="table-consulta-ventas" class="table table-striped table-bordered" cellspacing="0" width="100%">
+			<table id="table-consulta-ventas" class="table table-striped table-bordered table-hovered" cellspacing="0" width="100%">
 		        <thead>
 		            <tr>
 		                <th>nombre_cliente</th>

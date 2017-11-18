@@ -8,14 +8,13 @@
 			<table id="table-consulta-cliente" class="table table-striped table-bordered" cellspacing="0" width="100%">
 		        <thead>
 		            <tr>
-		                <th>nombre_cliente</th>
-		                <th>pref_doc_cliente</th>
-		                <th>doc_cliente</th>
+		                <th>nombre</th>
+		                <th>documento</th>
+		                <th>telefono</th>
+		                <th>otro_tefl</th>
+		                <th>email</th>
 		                <th>tipo_cliente</th>
-		                <th>rason_social_cliente</th>
-		                <th>email_cliente</th>
-		                <th>telf_cliente</th>
-		                <th>otro_telf_cliente</th>
+		                <th>rason_social</th>	
 		                <th></th>
 		            </tr>
 		        </thead>

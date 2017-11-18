@@ -23,7 +23,7 @@ class VentasController extends ClientesModel
 				'data_javascript' => $data_javascript
 		);
 
-		$sub_menu = resolve_sub_opcion("operacionesController", $_SESSION['opciones_menu']);
+		$sub_menu = resolve_sub_opcion("operacionesz|Controller", $_SESSION['opciones_menu']);
 		
 		return new View('consulta', [
 									  'titulo' => 'Ventas', 
