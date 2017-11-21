@@ -16,7 +16,7 @@ class RegistroController extends ClientesModel
 
 		$data_style = ['css/normalize','css/main_style', 'css/font-awesome', 'css/registro', 'data_table/datatables.min'];
 
-		$data_javascript = ['js/jquery-3.2.1.min', 'js/main', 'js/registro', 'data_table/datatables.min'];
+		$data_javascript = ['js/jquery-3.2.1.min', 'js/main', 'js/registro_cliente', 'data_table/datatables.min'];
 
 		$data_head = array(
 				'data_style' => $data_style,
@@ -25,7 +25,7 @@ class RegistroController extends ClientesModel
 
 		$sub_menu = resolve_sub_opcion("clientesController", $_SESSION['opciones_menu']);
 	
-		return new View('registro', [
+		return new View('registro_cliente', [
 									  'titulo' => 'Registro Cliente', 
 									  'data_head' => $data_head, 
 									  'opciones_sub_menu' => $sub_menu

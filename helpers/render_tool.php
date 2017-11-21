@@ -91,7 +91,7 @@ function menu_ico($menu=''){
 			 return 'fa-address-book-o';
 			break;
 
-		case 'consulta':
+		case 'modificar':
 			 return 'fa-book';
 			break;			
 

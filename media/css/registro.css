@@ -13,32 +13,25 @@ input[type="radio"] + label,
 input[type="checkbox"] + label:before,
 select option,
 select {
-   width: 100%;
+  width: 100%;
 	margin: .5em;
 	padding: .5em;
 	line-height: 1.4;
 	background-color: #ccccd9;
 	border: 1px solid #555a72;
 	border-radius: 3px;
+  box-sizing: border-box; 
 	-webkit-transition: 0.2s ease-in-out;
 	-moz-transition: 0.2s ease-in-out;
 	-o-transition: 0.2s ease-in-out;
 	transition: 0.2s ease-in-out;
 	transition: all 0.2s ease-in-out;
 }
-input:focus {
-  box-shadow: 0 0 5px rgb(104, 104, 217);
-  border: 1px solid rgba(59, 59, 180, 0.8);
-}
-input:focus + .input-icon i {
-  color: #7ed321;
-}
-input:focus + .input-icon:after {
-  border-right-color: #7ed321;
-}
+
 input[type="radio"] {
   display: none;
 }
+
 input[type="radio"] + label:first-of-type {
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
@@ -109,7 +102,7 @@ select option {
 	
 .content {
     margin: 1.2em 1.5em 1em 0.5em;
-    padding: 1.5em 5em;
+    padding: 2.5em 10em;
     border-radius: 6px;
     background: #fff;
     box-shadow: 0 3px 20px rgba(77,63,122,0.4);
@@ -128,16 +121,20 @@ select option {
   margin-bottom: 10px;
 }
 
-.btn{
-    width: 150px;
-    background-color: #3f4ab8;
-    border: 1px solid #5d6dba;
-    color: #fff;
+.center-btn{
+	display: table;
+  margin: 30px auto;
 }
 
-.registrar-btn{
-	display: table;
-    margin: 30px auto;
+.btn-action:hover{
+
+background-color: #2e9a5b;
+}
+
+.input-error{
+
+  border: 3px solid #c51244;
+  box-sizing: border-box;
 }
 
 
