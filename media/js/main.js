@@ -8,4 +8,6 @@ $(function(){
 
 	$( '#'+path[4] ).addClass( "sub-menu-focus" );
 
+	console.log(baseURL);
+
 });

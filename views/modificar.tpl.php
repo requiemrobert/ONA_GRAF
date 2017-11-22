@@ -16,6 +16,7 @@
 		                <th>email</th>
 		                <th>tipo_cliente</th>
 		                <th>rason_social</th>	
+		                <th>direccion</th>
 		                <th></th>
 		            </tr>
 		        </thead>
@@ -128,13 +129,36 @@
 			    </div>
 			   
 			  </div>
-			<
 		</div>
+		<!-- END MODAL -->
 
-		<!-- The Modal Mensaje -->
+		<!-- The Modal Mensaje Delete-->
 		<div id="data-delete" class="modal">
-			<!-- Modal content -->
+			  <!-- Modal content -->
 			  <div class="modal-content">
+			  		<div class="modal-header">
+				        <h3 class="modal-title">Editar</h3>
+				        <button type="button" class="btn-close close" data-dismiss="modal" aria-label="Close">
+				          <span>&times;</span>
+				        </button>
+			   		</div>
+
+			   		<div class="modal-body">
+	         			<form method="POST" id="form-delete">
+	         				
+	         			    <div class="row-flex">
+
+								<p>Usted está segura que desea eliminar el registro <span id="doc-detele"></span>?</p>
+								<input type="hidden" name="documento-delete" id="documento-delete">
+							</div>
+
+	         			</form>
+         			</div>
+
+         			<div class="modal-footer">
+			       		<button type="button" id="delete-cliente" class="button btn-delete">Eliminar</button>
+			        	<button type="button" class="button btn-secondary close" data-dismiss="modal">Cerrar</button>
+			    	</div>	
 			  </div>	
 		
 		</div>	

@@ -50,4 +50,14 @@ class ModificarController extends ClientesModel
 
 	}	
 
+	public static function eliminar_clienteAction(){
+		
+		$data = json_decode(file_get_contents("php://input"));
+
+		$strJson = json_encode([ 'rc' => 'eliminar_cliente', 'data' => $data]);
+		
+		return getWS( $strJson , BASE_URL_WS );//Call WS return JSON
+
+	}
+
 }

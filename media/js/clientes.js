@@ -2,6 +2,59 @@ var path = window.location.href.split( '/' );
 var baseURL = path[0]+ "//" +path[2]+'/'+path[3] + '/' + path[4] + '/';
 
 $(function(){
+
+  $( '#consulta' ).addClass( "sub-menu-focus" );
+  fetch_data();
+  
+});
+
+function fetch_data()
+{
+  $('#table-consulta-cliente').DataTable({
+
+         scrollY: "51vh",
+         scroller: true,
+         scrollCollapse: true,
+         responsive: true,
+         "processing" : true,
+         "ajax": baseURL + "/consultar_clientes",
+        
+             "columns": [
+                { "data": "nombre" },
+                { "data": "apellido" },
+                { "data": "documento" },
+                { "data": "telefono" },
+                { "data": "otro_tefl" },
+                { "data": "email" },
+                { "data": "tipo_cliente" },
+                { "data": "rason_social" }
+             
+            ],
+            "language": {
+              "lengthMenu": "Mostrar _MENU_ registro por página",
+              "zeroRecords": "No se encontraron resultados",
+              "info": "Mostrando del _PAGE_ de _PAGES_",
+              "infoEmpty": "Ningún dato disponible en esta tabla",
+              "infoFiltered": "(filtrado desde _MAX_ total records)",
+              "sSearch": "Buscar:",
+            "sUrl": "",
+            "sInfoThousands": ",",
+            "sLoadingRecords": "Por favor espere - cargando...",
+            "oPaginate": {
+                       "sFirst":    "Primero",
+                       "sLast":     "Último",
+                       "sNext":     "Siguiente",
+                       "sPrevious": "Anterior"
+            }
+              }
+               
+    }); 
+
+}//END FETCH DATA
+
+
+/*
+$(function(){
 		
 	fetch_data();	
 
@@ -17,24 +70,23 @@ $(function(){
 	// When the user clicks on <span> (x), close the modal
 	$(".close").on('click', function() {
 	    modal.css("display" , "none");
-      $('#data-delete').css("display" , "none");
 	});
 
 	$('#table-consulta-cliente tbody').on( 'click', '.update', function () {
 
-		  modal.css("display" , "block");
+		modal.css("display" , "block");
    		var row = $(this).parent().parent().parent();
     	var table = $('#table-consulta-cliente').DataTable();
     	var field = table.row( row ).data();
 
-		  var documento = field.documento.split( '-' );
+		var documento = field.documento.split( '-' );
 
     	$("#nombre_cliente").val(field.nombre); 
     	$("#apellido_cliente").val(field.apellido);
     	$("#doc_cliente").val(documento[1]);
     	$("#new_doc_cliente").val(documento[1]);
     	$("#email_cliente").val(field.email);
-    	$("#rason_social_cliente").val(field.rason_social);
+    	$("#rason_social_cliente").val(field.email);
     	$("#direccion_cliente").val(field.direccion);
     	$("#telf_cliente").val(field.telefono);
     	$("#otro_telf_cliente").val(field.otro_tefl);
@@ -42,63 +94,13 @@ $(function(){
 
 	});	 
 
-  $("#guardar-cambios").on('click', function(){
+	$("#guardar-cambios").on('click', function(){
 
-      validateForm();
-
-  }); 
-
-  $('#table-consulta-cliente tbody').on( 'click', '.delete', function () {
-
-      $('#data-delete').css("display","block");
-
-      var row = $(this).parent().parent().parent();
-      var table = $('#table-consulta-cliente').DataTable();
-      var field = table.row( row ).data(); 
-      var documento = field.documento.split( '-' );
-
-      $("#doc-detele").text(field.documento);
-      $("#documento-delete").val(documento[1]);
-
-  });
-    
-	$("#delete-cliente").on('click', function(){
-
-		  eliminarData($("#documento-delete").val());
-
+		validateForm();
 	});	
 
 
 });
-
-function eliminarData(data){
-
-    var dataJson = JSON.stringify({"documento" : data});
-
-    $login = $.ajax({
-                      type: "POST",
-                      url: baseURL + "/eliminar_cliente",
-                      data: dataJson,
-                      contentType: "application/json; charset=utf-8",
-                      dataType: "json"
-    }); 
-
-    $login.done(function(response) {
-  
-      mensajeResponse(response);
-  
-    });
-
-    $login.fail(function(response) {
-        console.error("hubo un inconveniente");
-    });
-
-    $login.always(function(data) {
-       //console.info("accion completada"); 
-       //console.log(data);
-    });
-
-}
 
 function validateForm(){ 
 		
@@ -129,12 +131,13 @@ function validateForm(){
 
 function modificarData(dataJson){
 	
-	  $login = $.ajax({
+	$login = $.ajax({
                       type: "POST",
                       url: baseURL + "/modificar_cliente",
                       data: dataJson,
                       contentType: "application/json; charset=utf-8",
                       dataType: "json"
+
     }); 
 
     $login.done(function(response) {
@@ -161,9 +164,9 @@ function mensajeResponse(response){
 
               alert(response.mensaje);
               $('#table-consulta-cliente').DataTable().destroy();
-     		      fetch_data();	
-        	    $('#data-update').css("display" , "none");
-              $('#data-delete').css("display" , "none");
+     		  fetch_data();	
+        	  $('#data-update').css("display" , "none");
+              
               break;
 
           case -200:
@@ -222,58 +225,6 @@ function validateField(input) {
   return valid;
 }
 
-function fetch_data()
-{
-	$('#table-consulta-cliente').DataTable({
-
-	 			 scrollY: "51vh",
-        		 scroller: true,
-        		 scrollCollapse: true,
-        		 responsive: true,
-        		 "processing" : true,
-    			   /* "serverSide" : true,*/
-			 	 "ajax": baseURL + "/consultar_clientes",
-			 	
-		         "columns": [
-		            { "data": "nombre" },
-		            { "data": "apellido" },
-		            { "data": "documento" },
-		            { "data": "telefono" },
-		            { "data": "otro_tefl" },
-		            { "data": "email" },
-		            { "data": "tipo_cliente" },
-		            { "data": "rason_social" },
-                { "data": "direccion"},
-        			  { "render": function () {
-        						  var btn_edit = '<button type="button" id="btn-editar" class="btn btn-edit update"><span class="fa fa-edit"></span></button>';
-            					var btn_cancel = '<button type="button" id="btn-cancelar" class="btn btn-cancel delete"><span class="fa fa-trash-o"></span></button>'; 
-            					return '<div class="cont-btn-table">'+btn_edit + btn_cancel+'</div>';
-       						   }
-       				},
-		        ],
-		        "language": {
-	            "lengthMenu": "Mostrar _MENU_ registro por página",
-	            "zeroRecords": "No se encontraron resultados",
-	            "info": "Mostrando del _PAGE_ de _PAGES_",
-	            "infoEmpty": "Ningún dato disponible en esta tabla",
-	            "infoFiltered": "(filtrado desde _MAX_ total records)",
-	           	"sSearch": "Buscar:",
-			    	"sUrl": "",
-			    	"sInfoThousands": ",",
-			    	"sLoadingRecords": "Por favor espere - cargando...",
-			   		"oPaginate": {
-			        			   "sFirst":    "Primero",
-			        			   "sLast":     "Último",
-			        			   "sNext":     "Siguiente",
-			        			   "sPrevious": "Anterior"
-			   		}
-	           	}
-		        	 
-	 	}); 
-
-}//END FETCH DATA
-
-
 function number(e) {
 
     tecla = (document.all) ? e.keyCode : e.which;
@@ -305,4 +256,4 @@ function changeValueL(dropdown) {
           field.maxLength = 8;
         }
 }
-
+*/

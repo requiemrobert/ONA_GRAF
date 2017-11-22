@@ -396,6 +396,71 @@ footer .social-media .hi-icon:hover {
     border-color: #d43f3a;
 }
 
+.btn-secondary {
+    color: #fff;
+    background-color: #868e96;
+    border-color: #868e96;
+}
+
+.btn-secondary:hover {
+    color: #fff;
+    background-color: #727b84;
+    border-color: #6c757d;
+}
+
+.btn-secondary:not([disabled]):not(.disabled):active{
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #666e76;
+    box-shadow: 0 0 0 0.2rem rgba(134,142,150,.5);
+}
+
+.btn-delete{
+
+    color: #fff;
+    background-color: #e6655c;
+    border-color: #c0271c;
+}
+
+.btn-delete:active{
+
+    outline: none;
+    box-shadow: none;
+}
+
+.btn-delete:hover {
+    color: #fff;
+    background-color: #c53025;
+    border-color: #ca2013;
+}
+
+.btn-delete:not([disabled]):not(.disabled):active {
+    color: #fff;
+    background-color: #e61000;
+    border-color: #c11407;
+    box-shadow: 0 0 0 0.2rem rgb(206, 126, 120);
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+
+.btn-primary:not([disabled]):not(.disabled):active{
+    color: #fff;
+    background-color: #0062cc;
+    border-color: #005cbf;
+    box-shadow: 0 0 0 0.25rem rgba(0,123,255,.5);
+}
+
+
 .cont-btn-table{
     display: flex;
     align-items: center;

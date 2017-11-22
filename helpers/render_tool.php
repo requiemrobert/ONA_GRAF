@@ -39,7 +39,17 @@ function render_sub_menu($data_opciones = []){
 	
 		foreach ($data_opciones as $sub_menu ) {
 		
-			$render .=	'<li> <a href='. BASE_URL . $sub_menu .' id='. $sub_menu .' >';
+			
+			if ($sub_menu == "consulta") {
+
+				$render .=	'<li> <a href="'. BASE_URL .'clientes'.'" id='. $sub_menu .' >';
+
+			}
+			else
+			{
+				$render .=	'<li> <a href='. BASE_URL . $sub_menu .' id='. $sub_menu .' >';
+			}
+
 			$render .=  "<i class='fa ". menu_ico($sub_menu)." fa-me' aria-hidden='true'></i>";
 			$render .=  "<label> ". $sub_menu ."</label>";
 			$render .=	"</a></li>";
@@ -89,6 +99,10 @@ function menu_ico($menu=''){
 
 		case 'registro':
 			 return 'fa-address-book-o';
+			break;
+
+		case 'consulta':	
+			 return 'fa-search';
 			break;
 
 		case 'modificar':
