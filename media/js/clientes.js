@@ -4,8 +4,9 @@ var baseURL = path[0]+ "//" +path[2]+'/'+path[3] + '/' + path[4] + '/';
 $(function(){
 
   $( '#consulta' ).addClass( "sub-menu-focus" );
+
   fetch_data();
-  
+ 
 });
 
 function fetch_data()
@@ -16,8 +17,7 @@ function fetch_data()
          scroller: true,
          scrollCollapse: true,
          responsive: true,
-         "processing" : true,
-         "ajax": baseURL + "/consultar_clientes",
+         "ajax": baseURL + "consultar_clientes",
         
              "columns": [
                 { "data": "nombre" },
@@ -27,7 +27,8 @@ function fetch_data()
                 { "data": "otro_tefl" },
                 { "data": "email" },
                 { "data": "tipo_cliente" },
-                { "data": "rason_social" }
+                { "data": "rason_social" },
+                { "data": "direccion"},
              
             ],
             "language": {

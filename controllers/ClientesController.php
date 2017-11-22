@@ -15,9 +15,16 @@ class ClientesController extends ClientesModel
 	       $data_javascript = [];
 	    } 
 
-		$data_style = ['css/normalize','css/main_style', 'css/font-awesome', 'css/clientes'];
+		$data_style = ['css/normalize',
+					   'css/main_style', 
+					   'css/font-awesome', 
+					   'data_table/css/jquery-ui.css', 
+					   'data_table/datatables.min', 
+					   'css/clientes', 
+					   'modal/modal'];
 
-		$data_javascript = ['js/jquery-3.2.1.min', 'js/main', 'js/clientes'];
+		$data_javascript = ['js/jquery-3.2.1.min', 
+							'js/main', 'data_table/datatables.min', 'js/modificar', 'modal/modal', 'js/clientes'];
 
 		$data_head = array(
 				'data_style' => $data_style,
@@ -33,10 +40,18 @@ class ClientesController extends ClientesModel
 									]);
 	}
 
-	public static function registrarAction(){
+	/*public static function registrarAction(){
 
 		$data = json_decode(file_get_contents("php://input"));
 		$strJson = json_encode([ 'rc' => 'registrar_cliente', 'data' => $data]);
+		
+		return getWS( $strJson , BASE_URL_WS );//Call WS return JSON
+
+	}*/ //verificar QA !!!
+
+	public static function consultar_clientesAction(){
+		
+		$strJson = json_encode([ 'rc' => 'consultar_cliente' ]);
 		
 		return getWS( $strJson , BASE_URL_WS );//Call WS return JSON
 
