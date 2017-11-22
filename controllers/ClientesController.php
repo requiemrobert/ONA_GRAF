@@ -15,16 +15,25 @@ class ClientesController extends ClientesModel
 	       $data_javascript = [];
 	    } 
 
-		$data_style = ['css/normalize',
+		$data_style = [
+					   'css/normalize',
 					   'css/main_style', 
 					   'css/font-awesome', 
-					   'data_table/css/jquery-ui.css', 
-					   'data_table/datatables.min', 
+
+					   'data_table_export/datatables.min',	
+					   'data_table_export/Buttons/css/buttons.dataTables.min',
+
 					   'css/clientes', 
 					   'modal/modal'];
 
-		$data_javascript = ['js/jquery-3.2.1.min', 
-							'js/main', 'data_table/datatables.min', 'js/modificar', 'modal/modal', 'js/clientes'];
+		$data_javascript = [
+							'data_table_export/jquery-3.2.1.min',
+							'data_table_export/datatables.min',
+							'data_table_export/Buttons/js/buttons.flash.min',	
+
+							'modal/modal',
+							'js/main', 
+							'js/clientes'];
 
 		$data_head = array(
 				'data_style' => $data_style,

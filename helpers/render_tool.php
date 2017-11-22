@@ -106,7 +106,7 @@ function menu_ico($menu=''){
 			break;
 
 		case 'modificar':
-			 return 'fa-book';
+			 return 'fa-pencil-square-o';
 			break;			
 
 		case 'reportes':

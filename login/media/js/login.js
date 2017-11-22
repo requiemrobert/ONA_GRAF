@@ -41,6 +41,7 @@ function callWebService(){
    var $form = $('form');
    var dataJson = getFormData($form);
    var $login;
+   
    $.wait( function(){  timeAjax(dataJson)  }, 5 );
 
 }

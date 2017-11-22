@@ -6,12 +6,14 @@ $(function(){
   $( '#consulta' ).addClass( "sub-menu-focus" );
 
   fetch_data();
+
  
 });
 
 function fetch_data()
 {
-  $('#table-consulta-cliente').DataTable({
+
+ var table = $('#table-consulta-cliente').DataTable({
 
          scrollY: "51vh",
          scroller: true,
@@ -19,7 +21,7 @@ function fetch_data()
          responsive: true,
          "ajax": baseURL + "consultar_clientes",
         
-             "columns": [
+          "columns": [
                 { "data": "nombre" },
                 { "data": "apellido" },
                 { "data": "documento" },
@@ -28,30 +30,34 @@ function fetch_data()
                 { "data": "email" },
                 { "data": "tipo_cliente" },
                 { "data": "rason_social" },
-                { "data": "direccion"},
+                { "data": "direccion"}
              
-            ],
-            "language": {
-              "lengthMenu": "Mostrar _MENU_ registro por página",
-              "zeroRecords": "No se encontraron resultados",
-              "info": "Mostrando del _PAGE_ de _PAGES_",
-              "infoEmpty": "Ningún dato disponible en esta tabla",
-              "infoFiltered": "(filtrado desde _MAX_ total records)",
-              "sSearch": "Buscar:",
-            "sUrl": "",
-            "sInfoThousands": ",",
-            "sLoadingRecords": "Por favor espere - cargando...",
-            "oPaginate": {
-                       "sFirst":    "Primero",
-                       "sLast":     "Último",
-                       "sNext":     "Siguiente",
-                       "sPrevious": "Anterior"
-            }
+          ],
+          /*** configure PDF ***/
+          dom: 'Bfrtip',
+          buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+          ],
+          "language": {
+                  "lengthMenu": "Mostrar _MENU_ registros",
+                  "zeroRecords": "No se encontraron resultados",
+                  "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                  "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                  "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                  "sSearch": "Buscar:",
+                  "oPaginate": {
+                      "sFirst": "Primero",
+                      "sLast": "Último",
+                      "sNext": "Siguiente",
+                      "sPrevious": "Anterior"
+                  }
               }
                
     }); 
 
+
 }//END FETCH DATA
+
 
 
 /*

@@ -4,7 +4,7 @@
 
 		<div class="content-table">
 
-			<table id="table-consulta-cliente" class="table table-striped table-bordered" cellspacing="0" width="100%">
+			<table id="table-consulta-cliente" class="display nowrap" cellspacing="0" width="100%">
 		        <thead>
 		            <tr>
 		                <th>nombre</th>
