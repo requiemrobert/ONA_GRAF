@@ -36,7 +36,7 @@ function fetch_data()
           /*** configure PDF ***/
           dom: 'Bfrtip',
           buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
+            'copy', 'csv', 'excel', 'print'
           ],
           "language": {
                   "lengthMenu": "Mostrar _MENU_ registros",

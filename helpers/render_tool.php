@@ -91,7 +91,7 @@ function menu_ico($menu=''){
 			break;	
 
 		case 'proveedores':
-			 return 'fa-truck';
+			 return 'fa-handshake-o';
 			break;
 		case 'usuarios':
 			 return 'fa-user-circle-o';

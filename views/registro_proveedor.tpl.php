@@ -60,24 +60,37 @@
 				 	<input type="tel" name="telf_cliente" id="telf_cliente" onpaste="return alpha(event)" onkeypress="return number(event)" required>
 			</div>
 
-			<div class="input-group input-group-icon">
-					<label for="otro_telf_cliente">+Telefonos</label>
+			<div class="input-group input-group-icon">	 	
+				 	<label for="otro_telf_cliente">+Telefonos</label>
 				 	<input type="tel" name="otro_telf_cliente" id="otro_telf_cliente" onpaste="return alpha(event)" onkeypress="return number(event)">
 			</div>
 
 		</div>
 
 		<div class="row-flex">
+
 			<div class="input-group input-group-icon">
 					<label for="email_cliente">*Tipo Cliente</label>
-				 	<select class="select-col" name="tipo_clientetipo_cliente" id="tipo_cliente" class="valid" required>
-	                        <option selected="selected" value="">Seleccione</option>
-							<option value="detalle">detalle</option>   
-							<option value="almayor">al mayor</option>
-							<option value="almayor">potencial</option> 
-									                           
-	                </select>
+				 	<input type="tel" name="tipo_cliente" id="tipo_cliente" required>
 			</div>
+
+			<div class="input-group input-group-icon">
+					<label for="email_cliente">Tipo Actividad</label>
+					<div class="select-group">
+						<select class="select-col" name="tipo_actividad" id="tipo_actividad" class="valid" required>
+		                        <option selected="selected" value="">Seleccione</option>
+								<option value="1">Transporte y almacenamiento</option>   
+								<option value="2">Actividades inmobiliarias</option> 
+								<option value="3">Editoriales</option> 
+								<option value="3">Imprenta y encuadernación</option>
+								<option value="3">Fabricación de papel y cartón</option>
+								<option value="3">Construcción y reparación de motores eléctricos</option>
+								<option value="3">Reparación e instalación de maquinaria y equipo</option> 	
+										                           
+		                </select>
+					</div>
+			</div>
+
 		</div>	
 
 		<div class="row-flex">
