@@ -23,7 +23,7 @@ class Registro_Stock_MPController
 				'data_javascript' => $data_javascript
 		);
 
-		$sub_menu = [ "Registro_Stock_MP", "Stock_MP", "Produccion", "Stock_Fisico", "Stock_Disponible" ];
+		$sub_menu = [ "Registro_Stock_MP", "Modificar_Stock_MP", "Stock_MP", "Produccion", "Stock_Fisico", "Stock_Disponible" ];
 
 		return new View('Registro_Stock_MP', [
 									  'titulo' => 'Registro Stock MP', 

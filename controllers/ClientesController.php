@@ -48,15 +48,6 @@ class ClientesController
 									]);
 	}
 
-	/*public static function registrarAction(){
-
-		$data = json_decode(file_get_contents("php://input"));
-		$strJson = json_encode([ 'rc' => 'registrar_cliente', 'data' => $data]);
-		
-		return getWS( $strJson , BASE_URL_WS );//Call WS return JSON
-
-	}*/ //verificar QA !!!
-
 	public static function consultar_clientesAction(){
 		
 		$strJson = json_encode([ 'rc' => 'consultar_cliente' ]);

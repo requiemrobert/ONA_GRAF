@@ -14,33 +14,16 @@ class stock_MPController
 	       $data_javascript = [];
 	    } 
 
-		$data_style = [
-					   'css/normalize',
-					   'css/main_style', 
-					   'css/font-awesome', 
+		$data_style = ['css/normalize','css/main_style', 'css/font-awesome', 'css/modificar', 'data_table/css/jquery-ui.css', 'data_table/datatables.min', 'modal/modal'];
 
-					   'data_table_export/datatables.min',	
-					   'data_table_export/Buttons/css/buttons.dataTables.min',
-
-					   'css/clientes', 
-					   'modal/modal',
-					   'css/registro'];
-
-		$data_javascript = [
-							'data_table_export/jquery-3.2.1.min',
-							'data_table_export/datatables.min',
-							'data_table_export/Buttons/js/buttons.flash.min',	
-
-							'modal/modal',
-							'js/main', 
-							'js/Registro_Stock_MP'];
+		$data_javascript = ['js/jquery-3.2.1.min', 'js/main', 'data_table/datatables.min', 'js/modificar', 'modal/modal'];
 
 		$data_head = array(
 				'data_style' => $data_style,
 				'data_javascript' => $data_javascript
 		);
 
-		$sub_menu = [ "Registro_Stock_MP", "Stock_MP", "Produccion", "Stock_Fisico", "Stock_Disponible" ];
+		$sub_menu = [ "Registro_Stock_MP", "Modificar_Stock_MP", "Stock_MP", "Produccion", "Stock_Fisico", "Stock_Disponible" ];
 		
 		return new View('stock_MP', [
 									  'titulo' => 'Stock Materia Prima', 
@@ -48,15 +31,6 @@ class stock_MPController
 									  'opciones_sub_menu' => $sub_menu
 									]);
 	}
-
-	/*public static function registrarAction(){
-
-		$data = json_decode(file_get_contents("php://input"));
-		$strJson = json_encode([ 'rc' => 'registrar_cliente', 'data' => $data]);
-		
-		return getWS( $strJson , BASE_URL_WS );//Call WS return JSON
-
-	}*/ //verificar QA !!!
 
 	public static function consultar_clientesAction(){
 		
