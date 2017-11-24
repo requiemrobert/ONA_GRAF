@@ -1,9 +1,8 @@
 <?php 
-require 'model/ClientesModel.php';
 require 'helpers/resolve_opcion.php';
 
 
-class stock_FisicoController extends ClientesModel
+class stock_FisicoController 
 {
 	public function indexAction()
 	{	
@@ -40,12 +39,10 @@ class stock_FisicoController extends ClientesModel
 				'data_javascript' => $data_javascript
 		);
 
-		/*$sub_menu = resolve_sub_opcion("OperacionesController",$_SESSION['opciones_menu']);*/
-
-		$sub_menu = ["Stock_MP", "Registro_Stock_MP", "Produccion", "Stock_Fisico", "Stock_Disponible"];
+		$sub_menu = [ "Registro_Stock_MP", "Stock_MP", "Produccion", "Stock_Fisico", "Stock_Disponible" ];
 
 		return new View('stock_Fisico', [
-									  'titulo' => 'stock_Fisico', 
+									  'titulo' => 'Stock Fisico', 
 									  'data_head' => $data_head, 
 									  'opciones_sub_menu' => $sub_menu
 									]);

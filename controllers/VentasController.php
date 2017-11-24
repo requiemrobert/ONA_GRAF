@@ -1,8 +1,7 @@
 <?php 
-require 'model/ClientesModel.php';
 require 'helpers/resolve_opcion.php';
 
-class VentasController extends ClientesModel
+class VentasController 
 {
 	public function indexAction()
 	{	
@@ -23,7 +22,7 @@ class VentasController extends ClientesModel
 				'data_javascript' => $data_javascript
 		);
 
-		$sub_menu = resolve_sub_opcion("operacionesController", $_SESSION['opciones_menu']);
+		$sub_menu = [ "Registro_Stock_MP", "Stock_MP", "Produccion", "Stock_Fisico", "Stock_Disponible" ];
 		
 		return new View('ventas', [
 									  'titulo' => 'Ventas', 

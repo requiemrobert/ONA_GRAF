@@ -2,7 +2,7 @@
 require 'helpers/resolve_opcion.php';
 
 
-class stock_MPController 
+class ProduccionController 
 {
 	public function indexAction()
 	{	
@@ -33,7 +33,7 @@ class stock_MPController
 
 							'modal/modal',
 							'js/main', 
-							'js/Registro_Stock_MP'];
+							'js/clientes'];
 
 		$data_head = array(
 				'data_style' => $data_style,
@@ -43,20 +43,11 @@ class stock_MPController
 		$sub_menu = [ "Registro_Stock_MP", "Stock_MP", "Produccion", "Stock_Fisico", "Stock_Disponible" ];
 		
 		return new View('stock_MP', [
-									  'titulo' => 'Stock Materia Prima', 
+									  'titulo' => 'Produccion', 
 									  'data_head' => $data_head, 
 									  'opciones_sub_menu' => $sub_menu
 									]);
 	}
-
-	/*public static function registrarAction(){
-
-		$data = json_decode(file_get_contents("php://input"));
-		$strJson = json_encode([ 'rc' => 'registrar_cliente', 'data' => $data]);
-		
-		return getWS( $strJson , BASE_URL_WS );//Call WS return JSON
-
-	}*/ //verificar QA !!!
 
 	public static function consultar_clientesAction(){
 		

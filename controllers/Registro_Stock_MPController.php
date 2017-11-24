@@ -1,9 +1,8 @@
 <?php 
-require 'model/ClientesModel.php';
 require 'helpers/resolve_opcion.php';
 
 
-class Registro_Stock_MPController extends ClientesModel
+class Registro_Stock_MPController 
 {
 	public function indexAction()
 	{	
@@ -24,7 +23,7 @@ class Registro_Stock_MPController extends ClientesModel
 				'data_javascript' => $data_javascript
 		);
 
-		$sub_menu = ["Stock_MP", "Registro_Stock_MP", "Produccion", "Stock_Fisico", "Stock_Disponible"];
+		$sub_menu = [ "Registro_Stock_MP", "Stock_MP", "Produccion", "Stock_Fisico", "Stock_Disponible" ];
 
 		return new View('Registro_Stock_MP', [
 									  'titulo' => 'Registro Stock MP', 
@@ -33,9 +32,11 @@ class Registro_Stock_MPController extends ClientesModel
 									]);
 	}
 
-	public static function consultar_clientesAction(){
+	public static function registrar_stock_MPAction(){
+
+		$data = json_decode(file_get_contents("php://input"));
 		
-		$strJson = json_encode([ 'rc' => 'consultar_stock_MP' ]);
+		$strJson = json_encode([ 'rc' => 'registrar_stock_MP' , 'data' => $data ]);
 		
 		return getWS( $strJson , BASE_URL_WS );//Call WS return JSON
 

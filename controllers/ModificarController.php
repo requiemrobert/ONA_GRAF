@@ -1,8 +1,7 @@
 <?php 
-require 'model/ClientesModel.php';
 require 'helpers/resolve_opcion.php';
 
-class ModificarController extends ClientesModel
+class ModificarController
 {
 	public function indexAction()
 	{	

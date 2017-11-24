@@ -22,7 +22,7 @@ class OperacionesController
 				'data_javascript' => $data_javascript
 		);
 
-		$sub_menu = resolve_sub_opcion(get_class($this),$_SESSION['opciones_menu']);
+		$sub_menu = [ "Registro_Stock_MP", "Stock_MP", "Produccion", "Stock_Fisico", "Stock_Disponible" ];
 
 		return new View('operaciones',[
 										  'titulo' => 'Home', 

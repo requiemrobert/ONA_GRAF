@@ -1,8 +1,7 @@
 <?php 
-require 'model/ClientesModel.php';
 require 'helpers/resolve_opcion.php';
 
-class RegistroController extends ClientesModel
+class RegistroController 
 {
 	public function indexAction()
 	{	
