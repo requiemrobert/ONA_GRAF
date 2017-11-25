@@ -59,28 +59,32 @@ function calcularProduccion(tipo_producto, unidades){
 
   }
 
-/*  if (tipo_producto == "gerencial"){
+  if (tipo_producto == "gerencial"){
 
-    var unidades_rollo  = cantidad_rollo  * 16;
-    var unidades_carton = cantidad_carton * 9;
-    var unidades_goma   = cantidad_goma   * 9;
-    var unidades_resma  = cantidad_resma  * 40;
+     unidades_rollo  = cantidad_rollo  * 9;
+     unidades_carton = cantidad_carton * 4;
+     unidades_goma   = cantidad_goma   * 4;
+     unidades_resma  = cantidad_resma  * 58;
 
   }
 
   if (tipo_producto == "perpetua"){
 
-    var unidades_rollo  = cantidad_rollo  * 16;
-    var unidades_carton = cantidad_carton * 9;
-    var unidades_goma   = cantidad_goma   * 9;
-    var unidades_resma  = cantidad_resma  * 40;
+     unidades_rollo  = cantidad_rollo  * 16;
+     unidades_carton = cantidad_carton * 9;
+     unidades_goma   = cantidad_goma   * 9;
+     unidades_resma  = cantidad_resma  * 110;
 
-  }*/
+  }
 
     var arr = [unidades_rollo, unidades_carton, unidades_goma ,unidades_resma];
 
+    console.log(arr);
+
     var max_agendas = Math.min(...arr);
-    
+
+    console.info(max_agendas);
+
     $("#cantidad_unidades").val(max_agendas);
 
     var resto_rollo  = parseInt( (max_agendas * cantidad_rollo)  / unidades_rollo );
@@ -92,6 +96,8 @@ function calcularProduccion(tipo_producto, unidades){
     var update_carton = Math.abs(cantidad_carton - resto_carton);
     var update_goma   = Math.abs(cantidad_goma   - resto_goma);
     var update_resma  = Math.abs(cantidad_resma  - resto_resma);
+
+    alert("max_agendas = " + max_agendas + " cantidad_rollo = " + cantidad_rollo + " unidades_rollo = " + unidades_rollo);
 
     $("#resto_rollo").val(update_rollo);
     $("#resto_carton").val(update_carton);
