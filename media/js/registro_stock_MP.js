@@ -7,6 +7,19 @@ $(function(){
 
 	$( '#registro_stock_MP' ).addClass( "sub-menu-focus" );
 
+  $('.js-example-basic-single').select2();
+
+
+  consultarProveedor();
+
+  $('#cod_proveedor').on("select2:select", function (e) { 
+         
+        var select_val = $(e.currentTarget).val();
+         
+         console.log(select_val);
+
+  }); 
+
 	$( '#tipo_material' ).on('change', function(){
 
 		var tipo = $(this).val();
@@ -38,7 +51,7 @@ $(function(){
           alert("algun campo esta vacio");
             
         }else if(count_empty == 0){
-          
+            
           registrarMP(dataJson);
           
         }
@@ -47,7 +60,7 @@ $(function(){
 
 });//FIN DOCUMENT
 
-function registrarMP(dataJson, action){
+function registrarMP(dataJson){
 
     $login = $.ajax({
                       type: "POST",
@@ -62,6 +75,38 @@ function registrarMP(dataJson, action){
 
        mensajeResponse(response);
        $('#registrar-stock_mp')[0].reset();
+        
+    });
+
+    $login.fail(function(response) {
+      console.error(response); 
+    });
+
+    $login.always(function(data) {
+       
+    });
+
+}
+
+function consultarProveedor(){
+
+    $login = $.ajax({
+                      type: "GET",
+                      url: baseURL + 'consultar_proveedor',
+                      contentType: "application/json; charset=utf-8",
+                      dataType: "json"
+
+    }); 
+
+    $login.done(function(response) {
+
+      var proveedor = $('#cod_proveedor');
+
+      proveedor.empty().append('<option selected="selected" value="">Seleccione</option>');
+       
+      $(response.data).each(function(i, v){ // indice, valor     
+              proveedor.append('<option value="' + v.cod_proveedor + '">' + v.razon_social_proveedor + '</option>');
+      })
         
     });
 
@@ -101,7 +146,6 @@ function renderUnidades(tipo){
 				cantidad.empty();
 		}
 }
-
 
 //Función para comprobar los campos de texto
 function validateField(input) {

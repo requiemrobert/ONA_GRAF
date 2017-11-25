@@ -39,7 +39,7 @@ class ClientesController
 				'data_javascript' => $data_javascript
 		);
 
-		$sub_menu = resolve_sub_opcion(get_class($this),$_SESSION['opciones_menu']);
+		$sub_menu = ['registro','consulta','modificar'];
 
 		return new View('clientes', [
 									  'titulo' => 'Clientes', 

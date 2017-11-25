@@ -6,6 +6,15 @@
 		<div class="row-flex">
 
 			<div class="input-group input-group-icon">
+					<label for="tipo_materia">Código Proveedor</label>
+
+						<select class="js-example-basic-single" name="cod_proveedor_fk" id="cod_proveedor" class="valid" required>
+			                        <option selected="selected" value="">Seleccione</option>
+			            </select>
+		        
+			</div>
+
+			<div class="input-group input-group-icon">
 					<label for="tipo_materia">Tipo Materia Prima</label>
 					<div class="select-group">
 						<select class="select-col" name="tipo_material" id="tipo_material" class="valid" required>
@@ -30,18 +39,17 @@
 
 			<div class="input-group input-group-icon">
 					<label for="unidades">Unidades</label>
-					<input type="number" min="1" max="100" name="unidades" id="unidades">
-			</div>
-
-
-			<div class="input-group input-group-icon">
-					<label for="precio">Precio</label>
-				 	<input type="text" name="precio" id="precio">
+					<input type="number" min="1" max="100" name="unidades" id="unidades" value="1">
 			</div>
 
 		</div>
 
 		<div class="row-flex">
+
+			<div class="input-group input-group-icon">
+					<label for="precio">Precio</label>
+				 	<input type="text" name="precio" id="precio">
+			</div>
 
 			<div class="input-group input-group-icon">
 				<label for="fecha_registro">Fecha de Registro de Compra</label>
@@ -52,6 +60,8 @@
 					<label for="descripcion">Descripción</label>
 				 	<input type="text" name="descripcion" id="descripcion">
 			</div>
+
+			<div class="input-group input-group-icon"></div>
 
 		</div>	
 

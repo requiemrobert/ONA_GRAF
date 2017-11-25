@@ -470,7 +470,31 @@ footer .social-media .hi-icon:hover {
     
 }
 
-/*****/
+/**** Select2 ****/
 
+.select2-container--default .select2-selection--single {
+
+    background-color: #ccccd9 !important;    
+
+}
+
+.select2-search--dropdown .select2-search__field{
+
+    width: 94% !important;
+}
+
+.select2-container{
+    margin-top: 10px !important;
+}
+
+.select2-container .select2-selection--single{
+
+    height: 40px !important;     
+}
+
+.select2-selection{
+    display: flex !important;
+    align-items: center !important;
+}
 
 

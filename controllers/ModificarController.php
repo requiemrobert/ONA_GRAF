@@ -22,7 +22,7 @@ class ModificarController
 				'data_javascript' => $data_javascript
 		);
 
-		$sub_menu = resolve_sub_opcion("clientesController", $_SESSION['opciones_menu']);
+		$sub_menu = ['registro','consulta','modificar'];
 		
 		return new View('modificar', [
 									  'titulo' => 'Modificar Datos Clientes', 

@@ -70,7 +70,7 @@
 		<div class="row-flex">
 			<div class="input-group input-group-icon">
 					<label for="email_cliente">*Tipo Cliente</label>
-				 	<select class="select-col" name="tipo_clientetipo_cliente" id="tipo_cliente" class="valid" required>
+				 	<select class="select-col" name="tipo_cliente" id="tipo_cliente" class="valid" required>
 	                        <option selected="selected" value="">Seleccione</option>
 							<option value="detalle">detalle</option>   
 							<option value="almayor">al mayor</option>

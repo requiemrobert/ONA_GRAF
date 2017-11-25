@@ -22,7 +22,7 @@ class RegistroController
 				'data_javascript' => $data_javascript
 		);
 
-		$sub_menu = ["stock_MP", "registro_stock_MP", "produccion", "stock_Fisico", "registro_stock_Fisico"];
+		$sub_menu = ['registro','consulta','modificar'];
 	
 		return new View('registro_cliente', [
 									  'titulo' => 'Registro Cliente', 

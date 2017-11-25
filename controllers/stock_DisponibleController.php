@@ -2,7 +2,7 @@
 require 'helpers/resolve_opcion.php';
 
 
-class stock_DisponibleController extends ClientesModel
+class stock_DisponibleController 
 {
 	public function indexAction()
 	{	
@@ -39,7 +39,12 @@ class stock_DisponibleController extends ClientesModel
 				'data_javascript' => $data_javascript
 		);
 
-		$sub_menu = [ "Registro_Stock_MP", "Stock_MP", "Produccion", "Stock_Fisico", "Stock_Disponible" ];
+		$sub_menu = [ "Registro_Stock_MP", 
+					  "Modificar_Stock_MP", 
+					  "Stock_MP", 
+					  "Orden_Produccion", 
+					  "Stock_Fisico", 
+					  "Stock_Disponible" ];
 
 		return new View('stock_Disponible', [
 									  'titulo' => 'stock_Disponible', 
