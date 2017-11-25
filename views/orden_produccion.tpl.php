@@ -47,16 +47,34 @@
 			<div class="input-group input-group-icon"></div>
 		</div>	
 
-		<div class="row-flex">
+		<div class="row-flex" style="margin-top: 3em;">
 			<div class="input-group input-group-icon">
-				<label for="resma_disponible">Cantidad de Unidades</label>
+				<label for="resma_disponible">Cantidad Maximas de Agendas</label>
+				<input type="text" name="cantidad_unidades" id="cantidad_unidades" onpaste="return alpha(event)" onkeypress="return number(event, this)" maxlength="5" value="0" required readonly>
+			</div>
+			<div class="input-group input-group-icon">
+				<label for="resma_disponible">Cantidad restante Rollos mts</label>
+				<input type="text" name="resto_rollo" id="resto_rollo" onpaste="return alpha(event)" onkeypress="return number(event, this)" maxlength="5" value="0" required readonly>
+			</div>
+			<div class="input-group input-group-icon">
+				<label for="resma_disponible">Cantidad restante Carton mts</label>
+				<input type="text" name="resto_carton" id="resto_carton" onpaste="return alpha(event)" onkeypress="return number(event, this)" maxlength="5" value="0" required readonly>
+			</div>
+			<div class="input-group input-group-icon">
+				<label for="resma_disponible">Cantidad restante Goma mts</label>
+				<input type="text" name="resto_goma" id="resto_goma" onpaste="return alpha(event)" onkeypress="return number(event, this)" maxlength="5" value="0" required readonly>
+			</div>
+			
+		</div>
+		<div class="row-flex">
+			<div class="input-group input-group-icon"></div>
+			<div class="input-group input-group-icon">
+				<label for="resma_disponible">Cantidad restante Papel mts</label>
 				<input type="text" name="cantidad_unidades" id="cantidad_unidades" onpaste="return alpha(event)" onkeypress="return number(event, this)" maxlength="5" value="0" required readonly>
 			</div>
 			<div class="input-group input-group-icon"></div>
 			<div class="input-group input-group-icon"></div>
-			<div class="input-group input-group-icon"></div>
 		</div>
-
 		<div class="row-flex">
 			<input class="btn center-btn btn-action btn-format-m" type="button" id="calcular_unidades" value="Calcular Unidades">
 		</div>	
