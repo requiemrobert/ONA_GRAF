@@ -15,25 +15,17 @@ class Orden_ProduccionController
 	    } 
 
 		$data_style = [
-					   'css/normalize',
-					   'css/main_style', 
-					   'css/font-awesome', 
-
-					   'data_table_export/datatables.min',	
-					   'data_table_export/Buttons/css/buttons.dataTables.min',
-
-					   'css/clientes', 
-					   'modal/modal',
-					   'css/registro'];
+						'css/normalize',
+						'css/main_style', 
+						'css/font-awesome', 
+						'css/registro', 
+						'select2/css/select2.min'];
 
 		$data_javascript = [
-							'data_table_export/jquery-3.2.1.min',
-							'data_table_export/datatables.min',
-							'data_table_export/Buttons/js/buttons.flash.min',	
-
-							'modal/modal',
+							'js/jquery-3.2.1.min', 
 							'js/main', 
-							'js/clientes'];
+							'select2/js/select2.full.min',
+							'js/orden_produccion' ];
 
 		$data_head = array(
 				'data_style' => $data_style,
@@ -48,15 +40,23 @@ class Orden_ProduccionController
 					  "Stock_Disponible" ];
 		
 		return new View('orden_produccion', [
-									  'titulo' => 'Orden Producción', 
-									  'data_head' => $data_head, 
-									  'opciones_sub_menu' => $sub_menu
-									]);
+									  		  'titulo' => 'Orden Producción', 
+									  		  'data_head' => $data_head, 
+									  		  'opciones_sub_menu' => $sub_menu
+									        ]);
 	}
 
-	public static function consultar_clientesAction(){
+	public static function consultar_disponible_MPAction(){
 		
-		$strJson = json_encode([ 'rc' => 'consultar_stock_activo' ]);
+		$strJson = json_encode([ 'rc' => 'consultar_disponible_MP' ]);
+		
+		return getWS( $strJson , BASE_URL_WS );//Call WS return JSON
+
+	}
+
+	public static function consultar_proveedorAction(){
+	
+		$strJson = json_encode([ 'rc' => 'consultar_proveedor']);
 		
 		return getWS( $strJson , BASE_URL_WS );//Call WS return JSON
 

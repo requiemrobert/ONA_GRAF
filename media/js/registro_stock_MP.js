@@ -134,13 +134,13 @@ function renderUnidades(tipo){
 				cantidad.append('<option value="50">50 Mts</option>');
 				break;
 			case 'carton': 
-				cantidad.append('<option value="100" selected="selected">100cm X 70 cm </option>');
+				cantidad.append('<option value="1" selected="selected">100cm X 70 cm </option>');
 				break;
 			case 'goma': 
-				cantidad.append('<option value="100" selected="selected">100cm X 70 cm </option>');
+				cantidad.append('<option value="1" selected="selected">100cm X 70 cm </option>');
 				break;		
 			case 'resma': 
-				cantidad.append('<option value="100" selected="selected">66cm X 96 cm</option>');
+				cantidad.append('<option value="1" selected="selected">66cm X 96 cm</option>');
 				break;
 			default:
 				cantidad.empty();

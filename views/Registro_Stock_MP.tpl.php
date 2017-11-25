@@ -8,7 +8,7 @@
 			<div class="input-group input-group-icon">
 					<label for="tipo_materia">Código Proveedor</label>
 
-						<select class="js-example-basic-single" name="cod_proveedor_fk" id="cod_proveedor" class="valid" required>
+						<select class="js-example-basic-single" name="cod_proveedor_fk" id="cod_proveedor" required>
 			                        <option selected="selected" value="">Seleccione</option>
 			            </select>
 		        
