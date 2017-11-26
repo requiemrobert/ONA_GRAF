@@ -5,6 +5,19 @@ $(function(){
 
 consultarDisponible();
 
+var modal = $('#data-generar-orden');
+
+$("#pre_generar_orden").on('click',function(){
+
+    modal.css("display" , "block");
+});
+
+// When the user clicks on <span> (x), close the modal
+$(".close").on('click', function() {
+    modal.css("display" , "none");
+    $('#data-delete').css("display" , "none");
+});
+
 $('.js-example-basic-single').select2();
 
 $('#tipo_producto').on("select2:select", function (e) { 
@@ -26,17 +39,37 @@ $("#calcular_unidades").on("click",function(){
 
     alert("No se puede Generar Orden de Produccion falta materia prima");
 
+ }else if( tipo_producto == ''){
+
+    alert("Seleccione un tipo de Producto");
+
+ }else{
+
+   var unidades = {"data" : [ {"rollo" : cantidad_rollo }, {"carton": cantidad_carton},{"goma":cantidad_goma}, {"resma":cantidad_resma}]};
+
+   calcularProduccion(tipo_producto,unidades);
+   $("#pre_generar_orden").addClass("btn-action");
+   $("#pre_generar_orden").attr("disabled",false);
+
  }
 
- var unidades = {"data" : [ {"rollo" : cantidad_rollo }, {"carton": cantidad_carton},{"goma":cantidad_goma}, {"resma":cantidad_resma}]};
-
- calcularProduccion(tipo_producto,unidades);
-
 });
 
+$("#generar").on('click', function(){
 
+    var update_rollo  = $("#resto_rollo").val();
+    var update_carton = $("#resto_carton").val();
+    var update_goma   = $("#resto_goma").val();
+    var update_resma  = $("#resto_resma").val();
+    var producto      = $("#tipo_producto").val();
+    var cantidad_producto = $("#cantidad_unidades").val();
+
+    actualizarMateriales(update_rollo, update_carton, update_goma, update_resma, producto, cantidad_producto);
 
 });
+  
+
+});/***** END MAIN *****/
 
 function calcularProduccion(tipo_producto, unidades){
 
@@ -79,11 +112,7 @@ function calcularProduccion(tipo_producto, unidades){
 
     var arr = [unidades_rollo, unidades_carton, unidades_goma ,unidades_resma];
 
-    console.log(arr);
-
     var max_agendas = Math.min(...arr);
-
-    console.info(max_agendas);
 
     $("#cantidad_unidades").val(max_agendas);
 
@@ -97,19 +126,44 @@ function calcularProduccion(tipo_producto, unidades){
     var update_goma   = Math.abs(cantidad_goma   - resto_goma);
     var update_resma  = Math.abs(cantidad_resma  - resto_resma);
 
-    alert("max_agendas = " + max_agendas + " cantidad_rollo = " + cantidad_rollo + " unidades_rollo = " + unidades_rollo);
-
     $("#resto_rollo").val(update_rollo);
     $("#resto_carton").val(update_carton);
     $("#resto_goma").val(update_goma);
-    $("#resto_resma").val(update_goma);
-
-    //actualizarMateriales(, carton_resto, goma_resto, resma_resto);
-
-/*  $("#cantidad_unidades").val(max_agendas);*/
+    $("#resto_resma").val(update_resma);
 
 }
 
+function actualizarMateriales(update_rollo, update_carton, update_goma, update_resma, producto, cantidad_producto){
+
+    $login = $.ajax({
+                      type: "POST",
+                      data: JSON.stringify({  
+                                            producto :producto, 
+                                            cantidad_producto : cantidad_producto,
+                                            cantidad_rollo : update_rollo, 
+                                            cantidad_carton : update_carton,
+                                            cantidad_goma : update_goma, 
+                                            cantidad_resma :update_resma }),
+                      url: baseURL + 'actualizar_MP',
+                      contentType: "application/json; charset=utf-8",
+                      dataType: "json"
+    }); 
+
+    $login.done(function(response) {
+
+        var data = response.data;
+
+    });
+
+    $login.fail(function(response) {
+        console.error(response); 
+    });
+
+    $login.always(function(data) {
+        
+    });
+
+}
 
 function consultarDisponible(){
 

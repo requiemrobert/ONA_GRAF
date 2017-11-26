@@ -19,12 +19,14 @@ class Orden_ProduccionController
 						'css/main_style', 
 						'css/font-awesome', 
 						'css/registro', 
-						'select2/css/select2.min'];
+						'select2/css/select2.min',
+						'modal/modal'];
 
 		$data_javascript = [
 							'js/jquery-3.2.1.min', 
 							'js/main', 
 							'select2/js/select2.full.min',
+							'modal/modal',
 							'js/orden_produccion' ];
 
 		$data_head = array(
@@ -58,6 +60,16 @@ class Orden_ProduccionController
 	
 		$strJson = json_encode([ 'rc' => 'consultar_proveedor']);
 		
+		return getWS( $strJson , BASE_URL_WS );//Call WS return JSON
+
+	}
+
+	public static function actualizar_MPAction(){
+
+		$data = json_decode(file_get_contents("php://input"));
+		
+		$strJson = json_encode([ 'rc' => 'actualizar_MP' , 'data' => (array)$data ]);
+
 		return getWS( $strJson , BASE_URL_WS );//Call WS return JSON
 
 	}
