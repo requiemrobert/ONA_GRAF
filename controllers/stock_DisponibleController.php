@@ -2,7 +2,7 @@
 require 'helpers/resolve_opcion.php';
 
 
-class stock_DisponibleController 
+class Stock_DisponibleController 
 {
 	public function indexAction()
 	{	
@@ -32,7 +32,7 @@ class stock_DisponibleController
 
 							'modal/modal',
 							'js/main', 
-							'js/clientes'];
+							'js/Stock_Disponible'];
 
 		$data_head = array(
 				'data_style' => $data_style,
@@ -43,19 +43,18 @@ class stock_DisponibleController
 					  "Modificar_Stock_MP", 
 					  "Stock_MP", 
 					  "Orden_Produccion", 
-					  "Stock_Fisico", 
 					  "Stock_Disponible" ];
 
-		return new View('stock_Disponible', [
-									  'titulo' => 'stock_Disponible', 
+		return new View('Stock_Disponible', [
+									  'titulo' => 'Stock Disponible', 
 									  'data_head' => $data_head, 
 									  'opciones_sub_menu' => $sub_menu
 									]);
 	}
 
-	public static function consultar_clientesAction(){
+	public static function consultar_Stock_DisponibleAction(){
 		
-		$strJson = json_encode([ 'rc' => 'consultar_stock_Disponible' ]);
+		$strJson = json_encode([ 'rc' => 'consultar_Stock_Disponible' ]);
 		
 		return getWS( $strJson , BASE_URL_WS );//Call WS return JSON
 

@@ -224,6 +224,27 @@ function consultarDisponible(){
 
 }
 
+function mensajeResponse(response){
+
+    switch(response.rc) {
+          case 200:
+
+              alert("Orden de Produccion Resgitrada exitosamente");
+              window.location.reload(true);
+              $("#tipo_producto").empty().append('<option selected="selected" value="">Seleccione</option>');
+
+              break;
+
+          case -200:
+
+              alert(response.mensaje);
+              break;
+          default:
+              alert("sin respuesta");
+    }
+
+}
+
 function number(e, v) {
 
     tecla = (document.all) ? e.keyCode : e.which;

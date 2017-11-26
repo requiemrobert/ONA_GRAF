@@ -40,7 +40,6 @@ class stock_MPController
 					  "Modificar_Stock_MP", 
 					  "Stock_MP", 
 					  "Orden_Produccion", 
-					  "Stock_Fisico", 
 					  "Stock_Disponible" ];
 		
 		return new View('stock_MP', [

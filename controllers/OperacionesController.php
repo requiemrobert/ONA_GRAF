@@ -26,7 +26,6 @@ class OperacionesController
 					  "Modificar_Stock_MP", 
 					  "Stock_MP", 
 					  "Orden_Produccion", 
-					  "Stock_Fisico", 
 					  "Stock_Disponible" ];
 
 		return new View('operaciones',[

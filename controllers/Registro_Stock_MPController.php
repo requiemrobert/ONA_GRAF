@@ -36,7 +36,6 @@ class Registro_Stock_MPController
 					  "Modificar_Stock_MP", 
 					  "Stock_MP", 
 					  "Orden_Produccion", 
-					  "Stock_Fisico", 
 					  "Stock_Disponible" ];
 
 		return new View('Registro_Stock_MP', [

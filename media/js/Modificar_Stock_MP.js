@@ -210,8 +210,6 @@ function mensajeResponse(response){
 
 }
 
-     
-
 function getFormData($form){
     var unindexed_array = $form.serializeArray();
 
