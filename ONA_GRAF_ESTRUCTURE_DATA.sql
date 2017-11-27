@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2017-11-25 22:23:03
+Date: 2017-11-27 14:45:39
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -86,7 +86,7 @@ CREATE TABLE `material` (
   `descripcion_material` varchar(50) DEFAULT NULL,
   `cantidad_disponible` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_material`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of material
