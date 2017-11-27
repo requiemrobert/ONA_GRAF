@@ -31,13 +31,13 @@ $(function(){
 	$('#table-consulta-stock-mp tbody').on( 'click', '.update', function () {
 
      
-
 		  modal.css("display" , "block");
+
    		var row = $(this).parent().parent().parent();
     	var table = $('#table-consulta-stock-mp').DataTable();
     	var field = table.row( row ).data();
 
-       renderUnidades(field.tipo_material);
+      renderUnidades(field.tipo_material);
 
       $("#id_stock").val(field.id_stock);
       $("#tipo_material").val(field.tipo_material);
@@ -243,7 +243,6 @@ function validateField(input) {
   else if (input.attr('email') == 'true' && ( _empty || email) )
   {
     input.addClass('input-error');
-    console.log(input.attr('id') + " ==> empty : " + _empty +" email : |" + email);
     valid = false;
   }
   else

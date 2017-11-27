@@ -26,7 +26,8 @@ class stock_MPController
 							'data_table_export/jquery-3.2.1.min',
 							'data_table_export/datatables.min',
 							'data_table_export/Buttons/js/buttons.flash.min',	
-
+							'data_table_export/pdfmake/pdfmake.min',
+							'data_table_export/pdfmake/vfs_fonts',
 							'modal/modal',
 							'js/main', 
 							'js/stock_MP'];

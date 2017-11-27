@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : global_system
+Source Server         : MULTI_ONA_GRAF
 Source Server Version : 50505
-Source Host           : localhost:3306
+Source Host           : 127.0.0.1:3306
 Source Database       : ona_graf
 
 Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2017-11-23 16:59:45
+Date: 2017-11-25 22:23:03
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -42,7 +42,7 @@ INSERT INTO `autorizacion` VALUES ('5', '1', '5', '1');
 INSERT INTO `autorizacion` VALUES ('6', '1', '6', '1');
 INSERT INTO `autorizacion` VALUES ('7', '1', '7', '1');
 INSERT INTO `autorizacion` VALUES ('9', '1', '9', '1');
-INSERT INTO `autorizacion` VALUES ('10', '1', '10', '1');
+INSERT INTO `autorizacion` VALUES ('10', '1', '10', '0');
 INSERT INTO `autorizacion` VALUES ('11', '1', '11', '1');
 INSERT INTO `autorizacion` VALUES ('13', '1', '13', '1');
 INSERT INTO `autorizacion` VALUES ('14', '1', '14', '1');
@@ -65,16 +65,16 @@ CREATE TABLE `cliente` (
   `email_cliente` varchar(50) DEFAULT NULL,
   `tipo_cliente` varchar(10) DEFAULT NULL,
   `rason_social_cliente` varchar(50) DEFAULT NULL,
-  `direccion_cliente` varchar(50) DEFAULT NULL
+  `direccion_cliente` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of cliente
 -- ----------------------------
 INSERT INTO `cliente` VALUES ('juan', 'llerena', '20914731', 'V', '04143830695', '02128626341', 'rpaniagua@gmail.com', 'normal', 'robertsoft', 'la pastora');
-INSERT INTO `cliente` VALUES ('carlos', 'rojas', '25889784', 'V', '04143830695', '02128626341', 'crojas@gmail.com', '123', '', 'nueva direccion');
 INSERT INTO `cliente` VALUES ('Daniel', 'Nolasco', '2288968', 'V', '04143830695', '', 'dnolasco@gmail.com', 'fijo', '', 'la hoyada');
 INSERT INTO `cliente` VALUES ('luis', 'perez|', '123456', 'V', '02128626341', '', 'lperez@gmail.com', 'fijo', 'lperezventas', 'av baralt');
+INSERT INTO `cliente` VALUES ('robert', 'perez', '20915744', 'V', '02128626344', '', 'rperez@gmail.com', 'almayor', 'robert ', 'la pastora');
 
 -- ----------------------------
 -- Table structure for material
@@ -82,14 +82,19 @@ INSERT INTO `cliente` VALUES ('luis', 'perez|', '123456', 'V', '02128626341', ''
 DROP TABLE IF EXISTS `material`;
 CREATE TABLE `material` (
   `id_material` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre_material` varchar(50) DEFAULT NULL,
-  `medidas` varchar(10) DEFAULT NULL,
+  `tipo_material` varchar(50) NOT NULL,
+  `descripcion_material` varchar(50) DEFAULT NULL,
+  `cantidad_disponible` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_material`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of material
 -- ----------------------------
+INSERT INTO `material` VALUES ('1', 'rollo', 'Rollo de semi cuero', '87');
+INSERT INTO `material` VALUES ('2', 'carton', 'Cartón calibre de un kilo ', '54');
+INSERT INTO `material` VALUES ('3', 'goma', 'Goma espuma ', '15');
+INSERT INTO `material` VALUES ('4', 'resma', 'Resma de papel', '23');
 
 -- ----------------------------
 -- Table structure for modulo
@@ -112,7 +117,7 @@ CREATE TABLE `modulo` (
 INSERT INTO `modulo` VALUES ('1', '0', 'operaciones', '1', '2', null);
 INSERT INTO `modulo` VALUES ('2', '0', 'clientes', '1', '4', null);
 INSERT INTO `modulo` VALUES ('3', '0', 'proveedores', '1', '1', null);
-INSERT INTO `modulo` VALUES ('4', '0', 'productos', '1', '3', null);
+INSERT INTO `modulo` VALUES ('4', '0', 'productos', '0', '3', null);
 INSERT INTO `modulo` VALUES ('5', '1', 'produccion', '1', '0', null);
 INSERT INTO `modulo` VALUES ('6', '1', 'ventas', '1', '0', '6');
 INSERT INTO `modulo` VALUES ('7', '1', 'stock_MP', '1', '0', '1');
@@ -128,6 +133,25 @@ INSERT INTO `modulo` VALUES ('18', '1', 'stock_Disponible', '1', '0', '3');
 INSERT INTO `modulo` VALUES ('19', '3', 'registro_proveedores', '1', '0', null);
 INSERT INTO `modulo` VALUES ('20', '3', 'modificar_proveedores', '1', '0', null);
 INSERT INTO `modulo` VALUES ('21', '3', 'consulta_proveedores', '1', '0', null);
+
+-- ----------------------------
+-- Table structure for orden_produccion
+-- ----------------------------
+DROP TABLE IF EXISTS `orden_produccion`;
+CREATE TABLE `orden_produccion` (
+  `cod_orden` int(10) NOT NULL AUTO_INCREMENT,
+  `producto` varchar(20) DEFAULT NULL,
+  `cantidad_producto` int(10) DEFAULT NULL,
+  `fecha_orden` date DEFAULT NULL,
+  PRIMARY KEY (`cod_orden`)
+) ENGINE=InnoDB AUTO_INCREMENT=1306 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of orden_produccion
+-- ----------------------------
+INSERT INTO `orden_produccion` VALUES ('1303', 'ejecutiva', '405', '2017-11-25');
+INSERT INTO `orden_produccion` VALUES ('1304', 'gerencial', '20', '2017-11-25');
+INSERT INTO `orden_produccion` VALUES ('1305', 'perpetua', '270', '2017-11-25');
 
 -- ----------------------------
 -- Table structure for perfil
@@ -147,87 +171,48 @@ INSERT INTO `perfil` VALUES ('1', 'administrador', '1');
 INSERT INTO `perfil` VALUES ('2', 'usuario', '1');
 
 -- ----------------------------
--- Table structure for pieza
+-- Table structure for productos
 -- ----------------------------
-DROP TABLE IF EXISTS `pieza`;
-CREATE TABLE `pieza` (
-  `id_pieza` int(10) NOT NULL AUTO_INCREMENT,
-  `tipo_pieza` varchar(50) NOT NULL,
-  `fabricante` varchar(50) DEFAULT NULL,
-  `precio_pieza` varchar(15) DEFAULT NULL,
-  `numero_pieza` varchar(10) DEFAULT NULL,
-  `descripcion_pieza` varchar(150) DEFAULT NULL,
-  `fec_produccion` date DEFAULT NULL,
-  PRIMARY KEY (`id_pieza`)
-) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=latin1;
+DROP TABLE IF EXISTS `productos`;
+CREATE TABLE `productos` (
+  `id_producto` int(11) NOT NULL AUTO_INCREMENT,
+  `descripcion` varchar(50) DEFAULT NULL,
+  `costo` decimal(10,0) DEFAULT NULL,
+  `precio_venta` decimal(10,0) DEFAULT NULL,
+  `stock_disponible` int(10) DEFAULT NULL,
+  `stock_fisico` int(10) DEFAULT NULL,
+  PRIMARY KEY (`id_producto`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
--- Records of pieza
+-- Records of productos
 -- ----------------------------
-INSERT INTO `pieza` VALUES ('5', 'Retrovisor', 'toyota', '150000', 'ret322', 'retrovisor', '2017-11-07');
-INSERT INTO `pieza` VALUES ('6', 'Parachoques', 'toyota', '350000', 'pc3322', 'para choques delantero ', '2017-11-07');
-INSERT INTO `pieza` VALUES ('7', 'Capo', 'toyota', '450000', 'c2333', '', '2017-10-30');
-INSERT INTO `pieza` VALUES ('8', 'Techo', 'toyota', '1500000', 't1125', '', '2017-10-31');
-INSERT INTO `pieza` VALUES ('16', 'Retrovisor', 'toyota', '123302', 'ret213', 'retrovisor clÃ¡sico', '2017-10-10');
-INSERT INTO `pieza` VALUES ('17', 'Retrovisor', 'toyota', '25000', 'ret214', 'retrovisor ', '2017-10-12');
-INSERT INTO `pieza` VALUES ('18', 'Retrovisor', 'toyota', '25000', 'ret21465', 'retrovisor ', '2017-10-24');
-INSERT INTO `pieza` VALUES ('19', 'Retrovisor', 'toyota', '50000', 'ret21433', 'retrovisor ', '2017-10-20');
-INSERT INTO `pieza` VALUES ('20', 'Retrovisor', 'toyota', '350000', 'ret21433', 'retrovisor ', '2017-10-19');
-INSERT INTO `pieza` VALUES ('21', 'Retrovisor', 'toyota', '350000', 'ret21433', 'retrovisor ', '2017-10-25');
-INSERT INTO `pieza` VALUES ('22', 'Retrovisor', 'toyota', '350000', 'ret21433', 'retrovisor ', '2017-11-08');
-INSERT INTO `pieza` VALUES ('23', 'Retrovisor', 'toyota', '350000', 'ret21432', 'retrovisor ', '2017-11-09');
-INSERT INTO `pieza` VALUES ('24', 'Retrovisor', 'toyota', '350000', 'ret21435', 'retrovisor ', '2017-11-10');
-INSERT INTO `pieza` VALUES ('25', 'Capo', 'toyota', '450000', 'c23333', '', '2017-09-20');
-INSERT INTO `pieza` VALUES ('26', 'Capo', 'toyota', '450000', 'c23342', '', '2017-10-09');
-INSERT INTO `pieza` VALUES ('27', 'Capo', 'toyota', '450000', 'c23123', '', '2017-09-27');
-INSERT INTO `pieza` VALUES ('28', 'Capo', 'toyota', '450000', 'c23353', '', '2017-10-12');
-INSERT INTO `pieza` VALUES ('29', 'Parachoques', 'toyota', '1400000', 'pch1233', 'parachoques 1', '2017-10-09');
-INSERT INTO `pieza` VALUES ('30', 'Parachoques', 'toyota', '1400000', 'pch1233', 'parachoques 1', '2017-10-04');
-INSERT INTO `pieza` VALUES ('31', 'Parachoques', 'toyota', '1400000', 'pch1233', 'parachoques 1', '2017-11-06');
-INSERT INTO `pieza` VALUES ('32', 'Parachoques', 'toyota', '1400000', 'pch1233', 'parachoques 1', '2017-11-14');
-INSERT INTO `pieza` VALUES ('33', 'Parachoques', 'toyota', '1400000', 'pch123311', 'parachoques 1', '2017-10-16');
-INSERT INTO `pieza` VALUES ('34', 'Parachoques', 'toyota', '1400000', 'pch123311', 'parachoques 123456', '2017-10-25');
-INSERT INTO `pieza` VALUES ('35', 'Parachoques', 'toyota', '1400000', 'pch123311', 'parachoques 123456', '2017-09-26');
-INSERT INTO `pieza` VALUES ('36', 'Parachoques', 'toyota', '1400000', 'pch123311', 'parachoques 123456', '2017-11-05');
-INSERT INTO `pieza` VALUES ('37', 'Techo', 'toyota', '500000', 't1233', 'techo verde', '2017-11-14');
-INSERT INTO `pieza` VALUES ('38', 'Capo', 'toyota', '1500000', 'ca1022', '', '2017-11-10');
-INSERT INTO `pieza` VALUES ('39', 'Techo', 'toyota', '500000', 'te422', '', '2017-11-09');
-INSERT INTO `pieza` VALUES ('42', 'Retrovisor', 'toyota', '1340000', '1223', '', '2017-09-19');
-INSERT INTO `pieza` VALUES ('43', 'Retrovisor', 'toyota', '1340000', '1223', '', '2017-09-19');
-INSERT INTO `pieza` VALUES ('44', 'Retrovisor', 'toyota', '1340000', '1223', '', '2017-09-19');
-INSERT INTO `pieza` VALUES ('53', 'Parachoques', 'toyota', '400000', '1233', '12121', '0000-00-00');
-INSERT INTO `pieza` VALUES ('54', 'Retrovisor', 'toyota', '350000', 'hu123', '', '2017-10-11');
-INSERT INTO `pieza` VALUES ('58', 'Parachoques', 'toyota', '350000', 'hu123', '', '2017-10-11');
-INSERT INTO `pieza` VALUES ('59', 'Parachoques', 'toyota', '350000', 'hu123', '', '2017-10-11');
-INSERT INTO `pieza` VALUES ('60', 'Parachoques', 'toyota', '350000', 'hu123', '', '2017-10-11');
-INSERT INTO `pieza` VALUES ('63', 'Retrovisor', 'toyota', '2500000', 'de123', '', '2017-12-20');
-INSERT INTO `pieza` VALUES ('64', 'Retrovisor', 'toyota', '15000', '122', '', '2017-12-08');
-INSERT INTO `pieza` VALUES ('65', 'Retrovisor', 'toyota', '', '123', '', '2017-12-06');
-INSERT INTO `pieza` VALUES ('66', 'Retrovisor', 'toyota', '180000', 'retro3222', '', '2017-10-18');
 
 -- ----------------------------
 -- Table structure for proveedor
 -- ----------------------------
 DROP TABLE IF EXISTS `proveedor`;
 CREATE TABLE `proveedor` (
-  `id_proveedor` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre_proveedor` varchar(50) DEFAULT NULL,
-  `apellido_proveedor` varchar(50) DEFAULT NULL,
-  `pref_doc_proveedor` varchar(5) DEFAULT NULL,
-  `doc_proveedor` varchar(11) DEFAULT NULL,
-  `email` varchar(50) DEFAULT NULL,
+  `cod_proveedor` int(11) NOT NULL AUTO_INCREMENT,
   `razon_social_proveedor` varchar(50) DEFAULT NULL,
-  `direccion` varchar(100) DEFAULT NULL,
-  `telf_proveedor` varchar(11) DEFAULT NULL,
-  `otro_telf_proveedor` varchar(11) DEFAULT NULL,
+  `nombre_contacto` varchar(50) DEFAULT NULL,
+  `pre_rif` varchar(5) DEFAULT NULL,
+  `rif` varchar(11) DEFAULT NULL,
+  `telf` varchar(11) DEFAULT NULL,
+  `otro_telf` varchar(11) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `direccion` varchar(200) DEFAULT NULL,
   `tipo_proveedor` varchar(50) DEFAULT NULL,
   `tipo_actividad` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id_proveedor`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`cod_proveedor`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of proveedor
 -- ----------------------------
+INSERT INTO `proveedor` VALUES ('1', 'inversiones papel y mas', 'juan garcia', 'J', '00387874', '02128574877', '02128574877', 'papelymas@gmail.com', 'la pastora', 'fijo', '3');
+INSERT INTO `proveedor` VALUES ('2', 'carton y papel san martin', 'maria', 'J', '00387744', '02128574873', '02128574876', 'cartonpapelsanmartin@gmail.com', 'san martin', 'fijo', '3');
+INSERT INTO `proveedor` VALUES ('3', 'Distribuidora Ofipaca', 'carla', 'J', '03866520', '02128626341', '', 'ofipaca@gmail.com', 'Esq. Tracabordo, Edificio Guanare, Local 84, La Candelaria', 'mayorista', '3');
 
 -- ----------------------------
 -- Table structure for stock
@@ -235,17 +220,31 @@ CREATE TABLE `proveedor` (
 DROP TABLE IF EXISTS `stock`;
 CREATE TABLE `stock` (
   `id_stock` int(11) NOT NULL AUTO_INCREMENT,
+  `cod_proveedor_fk` int(10) DEFAULT NULL,
   `id_material_fk` int(11) NOT NULL,
-  `fecha_registro` date DEFAULT NULL,
+  `tipo_material` varchar(50) DEFAULT NULL,
+  `cantidad_material` decimal(50,0) NOT NULL,
+  `unidades` int(50) NOT NULL,
   `precio` int(11) DEFAULT NULL,
-  `cantidad` int(11) DEFAULT NULL,
+  `fecha_registro` date DEFAULT NULL,
   `descripcion` varchar(50) DEFAULT NULL,
+  `producto` varchar(50) DEFAULT NULL,
+  `fecha_proceso` date DEFAULT NULL,
+  `tiempo_proceso` int(10) DEFAULT NULL,
+  `status_material` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_stock`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of stock
 -- ----------------------------
+INSERT INTO `stock` VALUES ('3', null, '0', 'carton', '100', '4', '150000', '2017-11-15', 'prueba 001', null, null, null, null);
+INSERT INTO `stock` VALUES ('4', null, '0', 'rollo', '100', '3', '1580000', '2017-11-20', '', null, null, null, null);
+INSERT INTO `stock` VALUES ('5', '1', '0', 'carton', '100', '2', '350000', '2017-11-25', '', null, null, null, null);
+INSERT INTO `stock` VALUES ('6', '1', '0', 'rollo', '50', '4', '150000', '2017-11-25', '', null, null, null, null);
+INSERT INTO `stock` VALUES ('8', '1', '0', 'carton', '100', '3', '0', '2017-11-25', '', null, null, null, null);
+INSERT INTO `stock` VALUES ('9', '1', '0', 'rollo', '70', '4', '0', '2017-11-25', '', null, null, null, null);
+INSERT INTO `stock` VALUES ('11', '0', '0', 'rollo', '100', '1', '0', '2017-11-25', '', null, null, null, null);
 
 -- ----------------------------
 -- Table structure for usuario
